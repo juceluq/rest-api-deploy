@@ -13,14 +13,14 @@ app.disable('x-powered-by');
 
 // CORS PRE-FLIGHT
 // OPTIONS
+const ACCEPTED_ORIGINS = [
+  'http://localhost:3000',
+  'http://localhost:8080',
+  'http://movies.com'
+];
+
 app.use(cors({
   origin: (origin, callback) =>{
-    const ACCEPTED_ORIGINS = [
-      'http://localhost:3000',
-      'http://localhost:8080',
-      'http://movies.com'
-    ];
-
     if (ACCEPTED_ORIGINS.includes(origin)) {
       return callback(null, true);
     }
