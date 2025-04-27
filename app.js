@@ -13,14 +13,14 @@ app.disable('x-powered-by');
 
 // CORS PRE-FLIGHT
 // OPTIONS
-const ACCEPTED_ORIGINS = [
-  'http://localhost:3000',
-  'http://localhost:8080',
-  'http://movies.com'
-];
 
 app.use(cors({
-  origin: (origin, callback) =>{
+  origin: (origin, callback) => {
+    const ACCEPTED_ORIGINS = [
+      'http://localhost:3000',
+      'http://localhost:8080',
+      'http://movies.com'
+    ];
     if (ACCEPTED_ORIGINS.includes(origin)) {
       return callback(null, true);
     }
@@ -33,11 +33,6 @@ app.use(cors({
 
 // Todos los recursos que sean MOVIES se identifica con /movies
 app.get('/movies', (req, res) => {
-  const origin = req.header('origin');
-  if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
-    res.set('Access-Control-Allow-Origin', origin);
-  }
-
   const { genre } = req.query;
   if (genre) {
     const filteredMovies = movies.filter(m => m.genre.some(g => g.toLowerCase() === genre.toLowerCase()));
@@ -75,10 +70,6 @@ app.post('/movies', (req, res) => {
 });
 
 app.delete('/movies/:id', (req, res) => {
-  const origin = req.header('origin');
-  if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
-    res.set('Access-Control-Allow-Origin', origin);
-  }
   const { id } = req.params;
   const movieIndex = movies.findIndex(m => m.id === id);
 
@@ -112,11 +103,6 @@ app.patch('/movies/:id', (req, res) => {
 });
 
 app.options('/movies/:id', (req, res) => {
-  const origin = req.header('origin');
-  if (ACCEPTED_ORIGINS.includes(origin) || !origin) {
-    res.set('Access-Control-Allow-Origin', origin);
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE');
-  }
   res.sendStatus(200);
 });
 
