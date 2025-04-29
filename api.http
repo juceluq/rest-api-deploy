@@ -1,14 +1,14 @@
 ### Recuperar todas las peliculas
-GET http://localhost:3000/movies
+GET http://localhost:1234/movies
 
 ### Recuperar una pelicula por id
-GET http://localhost:3000/movies/c8a7d63f-3b04-44d3-9d95-8782fd7dcfaf
+GET http://localhost:1234/movies/c2095a96-2411-11f0-a11e-cc28aa1196bd
 
 ### Recuperar todas las películas por un género
-GET http://localhost:3000/movies?genre=action
+GET http://localhost:1234/movies?genre=drama
 
 ### Crear una película con POST
-POST http://localhost:3000/movies
+POST http://localhost:1234/movies
 Content-Type: application/json
 
 {
@@ -23,8 +23,11 @@ Content-Type: application/json
     ]
 }
 
+### Eliminar una película
+DELETE http://localhost:1234/movies/de1c1775-2417-11f0-a11e-cc28aa1196bd
+
 ### Actualizar una película
-PATCH http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+PATCH http://localhost:1234/movies/084e2cd1-2418-11f0-a11e-cc28aa1196bd
 Content-Type: application/json
 
 {
