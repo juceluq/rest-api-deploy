@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "app.js",
+            "src": "server-with-mysql.js",
             "use": "@vercel/node"
         }
     ],
